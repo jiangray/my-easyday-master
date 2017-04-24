@@ -1,23 +1,63 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <v-header></v-header>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <div class="tab">
+      <div class="tab-item">
+        <router-link to="/movie">
+          <i class="icon iconfont icon-dy-light"></i>
+          <h3>热映</h3>
+        </router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/seek">
+          <i class="icon iconfont icon-yanjing1"></i>
+          <h3>找片</h3>
+        </router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/user">
+          <i class="icon iconfont icon-ren"></i>
+          <h3>我的</h3>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import vHeader from '@/components/headerComponent/header';
+  export default {
+    name: 'app',
+    components: {
+      vHeader
+    }
+  };
+
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus" rel="stylesheet/stylus" scoped> 
+  .tab
+    display: flex
+    position: fixed
+    bottom: 0
+    width: 100%
+    height: 60px
+    line-height: 26px
+    border-top: 1px solid #494949
+    background-color: #f7f7f7
+    .tab-item
+      flex:1
+      text-align: center
+      margin-top: 5px
+      & > a
+        display: block
+        h3
+          font-size: 12px
+        &.active
+          color: #000
+    .icon
+      font-size: 24px
 </style>

@@ -1,11 +1,14 @@
 <template>
-  
+  <div class="seek">
+    我是找片页面
+  </div>
 </template>
 
 <script>
-export default {
-  
-}
+  export default {
+    name: 'seek'
+  };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

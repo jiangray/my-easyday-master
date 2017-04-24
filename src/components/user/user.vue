@@ -1,11 +1,14 @@
 <template>
-  
+  <div class="user">
+    我是个人中心
+  </div>
 </template>
 
 <script>
-export default {
-  
-}
+  export default {
+    name: 'user'
+  };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
