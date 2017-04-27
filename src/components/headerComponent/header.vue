@@ -19,33 +19,35 @@
 <style lang="stylus" rel="stylesheet/stylus" scoped> 
   .header
     width: 100%
-    height: 60px
+    height: 40px
     display: flex
     .address
       flex: 0.5
-      line-height: 60px
+      line-height: 40px
       text-align: center
       color: #494949
+      font-size: 14px
       .icon
-        vertical-align: top
+        vertical-align: baseline
         margin-left: 6px
     .search-wraper
       flex: 1.5
       margin-right: 10px
-      margin-top: 10px
+      margin-top: 5px
       border-radius: 8px
       padding-left: 5px
       background-color: #f5f5f5
-      height: 40px
-      line-height: 40px
+      height: 30px
+      line-height: 30px
       color: #9b9b9b
+      font-size: 14px
       .search
         height: 100%
         background-color: #f5f5f5
         outline: none
       .icon
         font-size: 16px
-        color: #000
+        color: #9b9b9b
         font-weight: 700
         vertical-align: top
 </style>

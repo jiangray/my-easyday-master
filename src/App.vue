@@ -46,7 +46,7 @@
     width: 100%
     height: 60px
     line-height: 26px
-    border-top: 1px solid #494949
+    border-top: 1px solid #b2b2b2
     background-color: #f7f7f7
     .tab-item
       flex:1
