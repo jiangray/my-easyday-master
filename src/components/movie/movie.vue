@@ -1,6 +1,5 @@
 <template>
-  <div ref="movies" class="movies">
-  <div class="movie" v-if="theaters.subjects">
+  <div ref="movies" class="movies clearfix">
     <div class="banner-wraper">
       <mt-swipe :auto="4000">
         <mt-swipe-item class="banner-item">
@@ -14,17 +13,27 @@
         </mt-swipe-item>
       </mt-swipe>
     </div>
-    <div class="tabs">
-      <div :class="{onActive: isOnActiveTheaters}" class="tab-item" @click="switchTabs">
+    <!--<div class="tabs">
+      <div :class="{onActive: isOnActive}" class="tab-item" @click="switchTabs">
         正在热映
       </div>
-      <div class="tab-item" :class="{onActive: isOnActiveComing}" @click="switchTabs">
+      <div class="tab-item" :class="{onActive: !isOnActive}" @click="switchTabs">
         即将上映
       </div>
     </div>
-    <inTheaters v-show="isOnActiveTheaters"></inTheaters>
-    <comingSoon v-show="isOnActiveComing"></comingSoon>
-  </div>
+    <inTheaters v-show="isOnActive"></inTheaters>
+    <comingSoon v-show="!isOnActive"></comingSoon>-->
+    <div class="tabs">
+      <div class="tab-item" :class="{onActive: isOnActive}" @click="switchTabs">
+        <router-link to="/movie/theater">正在热映</router-link>
+      </div>
+      <div class="tab-item" :class="{onActive: !isOnActive}" @click="switchTabs">
+        <router-link to="/movie/comingSoon">即将上映</router-link>
+      </div>
+    </div>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -36,30 +45,14 @@
     name: 'movies',
     data() {
       return {
-        isOnActiveTheaters: true,
-        isOnActiveComing: false,
-        theaters: {}
+        isOnActive: true
       };
     },
     methods: {
       switchTabs() {
-        this.isOnActiveTheaters = !this.isOnActiveTheaters;
-        this.isOnActiveComing = !this.isOnActiveComing;
-      },
-      _listScroll() {
-        this.moviesScroll = new BScroll(this.$refs.movies, {
-          click: true
-        });
+        this.isOnActive = !this.isOnActive;
+        // console.log(this.$children);
       }
-    },
-    created () {
-      this.axios.get('/api/movie/in_theaters' + '?start=0&count=3').then((res) => {
-        this.theaters = res.data;
-        // 解决数据异步更新时，数据未完全加载完全，bscroll无法获取目标内容高度，导致无法滚动的现象
-        this.$nextTick(() => {
-          // this._listScroll();
-        });
-      });
     },
     components: {
       inTheaters,
@@ -75,7 +68,7 @@
     width: 100%
     position: fixed
     top: 40px
-    bottom: 6px
+    bottom: 61px
     overflow: hidden
     .movie
       width: 100%
@@ -98,6 +91,9 @@
         text-align: center
         color: #9b9b9b
       .onActive
-        color: #000
         border-bottom: 2px solid #000
+        & a
+          color: #000
+          font-weight: 700
+          font-size: 16px
 </style>

@@ -61,11 +61,8 @@ export default {
       theatersScroll.on('touchend', (pos) => {
         let elHeight = document.getElementById('theatersWrapper').offsetHeight;
         let scrollHeight = document.getElementById('theater').scrollHeight;
-        // console.log('pos.y:' + pos.y);
-        // console.log('scrollHeight:' + scrollHeight);
-        // console.log('elHeight:' + elHeight);
         if (pos.y + (-elHeight) < (-scrollHeight - 50)) {
-          //  _this._onLoadNewData();
+           _this._onLoadNewData();
           // vue数据渲染到页面有延时，所以refresh在延时后调用
           setTimeout(function() {
             theatersScroll.refresh();
@@ -75,15 +72,12 @@ export default {
     },
     _reLoadData() {
       this.axios.get('/api/movie/in_theaters' + '?start=0&count=3').then((res) => {
-        // console.log(res.data);
         this.theaters.subjects = res.data.subjects;
       });
     },
     _onLoadNewData() {
       this.isScroll = true;
-      // console.log('111');
       this.axios.get('/api/movie/in_theaters' + '?start=' + this.datacount + '&count=3').then((res) => {
-        // console.log(res.data.subjects);
         this.theaters.subjects = this.theaters.subjects.concat(res.data.subjects);
       });
       this.datacount += 3;
@@ -134,7 +128,7 @@ export default {
         flex:1
         width: 100%
         margin-left: 10px
-        line-height: 30px
+        line-height: 26px
         color: #494949
         .title
           font-size: 18px
@@ -154,9 +148,9 @@ export default {
         .casts
           width: 200px
           overflow: hidden
-          text-overflow: ellipsis
+          /*text-overflow: ellipsis
           word-break: keep-all
-          white-space: nowrap;
+          white-space: nowrap;*/
           font-size: 12px 
         .collect-count
           font-size: 12px
