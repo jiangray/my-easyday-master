@@ -13,22 +13,12 @@
         </mt-swipe-item>
       </mt-swipe>
     </div>
-    <!--<div class="tabs">
-      <div :class="{onActive: isOnActive}" class="tab-item" @click="switchTabs">
-        正在热映
-      </div>
-      <div class="tab-item" :class="{onActive: !isOnActive}" @click="switchTabs">
-        即将上映
-      </div>
-    </div>
-    <inTheaters v-show="isOnActive"></inTheaters>
-    <comingSoon v-show="!isOnActive"></comingSoon>-->
     <div class="tabs">
-      <div class="tab-item" :class="{onActive: isOnActive}" @click="switchTabs">
-        <router-link to="/movie/theater">正在热映</router-link>
+      <div class="tab-item" id="theatersItem" :class="{onActive: isOnActive}" @click="switchTabs">
+        <router-link to="/hotMovie/inTheatersPage">正在热映</router-link>
       </div>
-      <div class="tab-item" :class="{onActive: !isOnActive}" @click="switchTabs">
-        <router-link to="/movie/comingSoon">即将上映</router-link>
+      <div class="tab-item" id="comingItem" :class="{onActive: !isOnActive}" @click="switchTabs">
+        <router-link to="/hotMovie/comingSoonPage">即将上映</router-link>
       </div>
     </div>
     <keep-alive>
@@ -38,8 +28,6 @@
 </template>
 
 <script>
-  import inTheaters from '@/components/inTheaters/inTheaters.vue';
-  import comingSoon from '@/components/comingSoon/comingSoon.vue';
   import BScroll from 'better-scroll';
   export default {
     name: 'movies',
@@ -51,12 +39,7 @@
     methods: {
       switchTabs() {
         this.isOnActive = !this.isOnActive;
-        // console.log(this.$children);
       }
-    },
-    components: {
-      inTheaters,
-      comingSoon
     }
   };
 
@@ -90,6 +73,8 @@
         line-height: 38px
         text-align: center
         color: #9b9b9b
+        & a
+          display: block
       .onActive
         border-bottom: 2px solid #000
         & a

@@ -3,23 +3,34 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 // 导入组件
-import movie from '../components/movie/movie.vue';
-import seek from '../components/seekMovie/seekMovie.vue';
+import hotMovie from '../components/hotMovie/hotMovie.vue';
+import seekMovie from '../components/seekMovie/seekMovie.vue';
 import user from '../components/user/user.vue';
-import theater from '@/components/inTheaters/inTheaters.vue';
-import coming from '@/components/comingSoon/comingSoon.vue';
+import inTheatersPage from '@/components/inTheatersPage/inTheatersPage.vue';
+import comingSoonPage from '@/components/comingSoonPage/comingSoonPage.vue';
+import moviePage from '@/components/moviePage/moviePage.vue';
+import tvPlayPage from '@/components/tvPlayPage/tvPlayPage.vue';
+
 let routes = [
-  { path: '/', redirect: '/movie/theater' },
+  { path: '/', redirect: '/hotMovie/inTheatersPage' },
   {
-    path: '/movie',
-    name: 'movie',
-    component: movie,
+    path: '/hotMovie',
+    name: 'movies',
+    component: hotMovie,
     children: [
-      { path: '/movie/theater', component: theater },
-      { path: '/movie/comingSoon', component: coming }
+      { path: '/hotMovie/inTheatersPage', component: inTheatersPage },
+      { path: '/hotMovie/comingSoonPage', component: comingSoonPage }
     ]
   },
-  { path: '/seek', name: 'seek', component: seek },
+  {
+    path: '/seekMovie',
+    name: 'seek',
+    component: seekMovie,
+    children: [
+      { path: '/seekMovie/moviePage', component: moviePage },
+      { path: '/seekMovie/tvPlayPage', component: tvPlayPage }
+    ]
+  },
   { path: '/user', name: 'user', component: user }
 ];
 

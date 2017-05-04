@@ -1,10 +1,12 @@
 <template>
-  
+  <div class="tvPlay">
+    我是电视剧
+  </div>
 </template>
 
 <script>
 export default {
-  
+  name: 'tvPlay'
 };
 </script>
 

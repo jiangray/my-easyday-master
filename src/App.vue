@@ -6,13 +6,13 @@
     </keep-alive>
     <div class="tab">
       <div class="tab-item" :class="{active: isActive}" @click="checkActive">
-        <router-link to="/movie/theater">
+        <router-link to="/hotMovie/inTheatersPage">
           <i class="icon iconfont icon-dy-light"></i>
           <h3>热映</h3>
         </router-link>
       </div>
       <div class="tab-item" :class="{active: isOn}" @click="checkOn">
-        <router-link to="/seek">
+        <router-link to="/seekMovie/moviePage">
           <i class="icon iconfont icon-yanjing1"></i>
           <h3>找片</h3>
         </router-link>
